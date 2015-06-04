@@ -5,3 +5,6 @@ next, install yii2 into code folder run "composer create-project --prefer-dist y
 
 check the result:
 add the project to apache listen document root, brower "http://localhost/code/web/index.php" to check whether yii is installed sucessfully
+
+2015-06-03：
+configure the database connection in file /code/config/db.php

@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use Faker\Provider\DateTime;
 use Yii;
 use app\models\BlogText;
 use app\models\BlogTextSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\vendor\fucus\ZTime;
 
 /**
  * BlogController implements the CRUD actions for BlogText model.
@@ -61,8 +63,10 @@ class BlogController extends Controller
     public function actionCreate()
     {
         $model = new BlogText();
+        $model->load(Yii::$app->request->post());
+        $model->create_date = ZTime::getCurrentDateTime();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->save()) {
             return $this->redirect(['view', 'id' => $model->text_id]);
         } else {
             return $this->render('create', [
@@ -80,6 +84,7 @@ class BlogController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->create_date = ZTime::getCurrentDateTime();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->text_id]);
