@@ -9,7 +9,7 @@ use app\models\BlogTextSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\vendor\fucus\ZTime;
+use app\helpers\fucus\ZTime;
 
 /**
  * BlogController implements the CRUD actions for BlogText model.
